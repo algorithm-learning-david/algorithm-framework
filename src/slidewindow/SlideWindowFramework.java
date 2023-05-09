@@ -25,6 +25,7 @@ public class SlideWindowFramework {
             while (left < right && valid == needs.length()){
                 //将移出窗口的字符
                 char out = s.charAt(left);
+                //注意避坑
                 window.remove(out);
                 //缩小窗口
                 left ++;
