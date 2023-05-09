@@ -45,6 +45,7 @@ public class MinSubString {
                 char out = s.charAt(left);
                 left ++;
                 if(needs.containsKey(out)){
+                    //坑 这里一定要先判断再移出元素
                     if(window.get(out).equals(needs.get(out))){
                         valid --;
                     }
