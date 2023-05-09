@@ -3,6 +3,8 @@
  */
 public class BinarySearch {
 
+
+
     //二分查找基本框架
 //    int binarySearch(int[] nums, int target) {
 //        int left = 0, right = ...;
