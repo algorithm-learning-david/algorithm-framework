@@ -20,7 +20,7 @@ public class MinSubString {
         Map<Character,Integer> window = new HashMap<>();
         Map<Character,Integer> needs = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
-            needs.put(t.charAt(i),needs.getOrDefault(t,0)+1);
+            needs.put(t.charAt(i),needs.getOrDefault(t,0) + 1);
         }
         int valid = 0;
         int left = 0, right = 0;
