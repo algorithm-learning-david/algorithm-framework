@@ -11,7 +11,7 @@ import java.util.*;
 public class SlideWindow {
 
     public static void main(String[] args) {
-        String s = "EBBANCFBDHA", t = "ABC";
+        String s = "ADOBECODEBANC", t = "ABC";
         System.out.println("输入： " + s + "  " + t);
         System.out.println("输出：" + minWindowMxg(s,t));
     }
