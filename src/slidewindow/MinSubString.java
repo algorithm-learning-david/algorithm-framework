@@ -1,5 +1,7 @@
 package slidewindow;
 
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,28 +22,42 @@ public class MinSubString {
         Map<Character,Integer> window = new HashMap<>();
         Map<Character,Integer> needs = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
-            needs.put(t.charAt(i),needs.getOrDefault(t,0) + 1);
+            char c = t.charAt(i);
+            needs.put(c,needs.getOrDefault(c,0) + 1);
         }
         int valid = 0;
         int left = 0, right = 0;
         int minSubStartIdx = 0, minSubL = Integer.MAX_VALUE;
         while (right < s.length()){
             char in = s.charAt(right);
-
-            window.put(in,window.getOrDefault(in,0));
             right ++;
             if(needs.containsKey(in)){
-                valid ++;
+                window.put(in,window.getOrDefault(in,0) + 1);
+                if(window.get(in).equals(needs.get(in))){
+                    valid ++;
+                }
             }
-            while (left < right && valid == t.length()){
+            while (valid == needs.size()){
+                if(right - left < minSubL){
+                    minSubL = right - left;
+                    minSubStartIdx = left;
+                }
                 char out = s.charAt(left);
-                window.remove(out);
                 left ++;
                 if(needs.containsKey(out)){
-                    valid --;
+                    if(window.get(out).equals(needs.get(out))){
+                        valid --;
+                    }
+                    window.put(out,window.get(out) - 1);
                 }
-                minSubL = Math.min(minSubL,right - left);
             }
         }
+        return minSubL == Integer.MAX_VALUE ? "" : s.substring(minSubStartIdx,minSubStartIdx + minSubL);
+    }
+
+    @Test
+    public void testMinWindow(){
+        String s = minWindow("aa", "aa");
+        System.out.println(s);
     }
 }

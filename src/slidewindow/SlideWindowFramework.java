@@ -6,7 +6,7 @@ import java.util.Map;
 public class SlideWindowFramework {
 
     public void slideWindow(String s, String needs){
-        //记录窗口中的数据
+        //记录窗口中满足条件的数据
         Map<Character,Integer> window = new HashMap<>();
         //窗口 [left,right)
         int left = 0, right = 0;
