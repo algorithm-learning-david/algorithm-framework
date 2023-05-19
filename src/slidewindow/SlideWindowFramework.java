@@ -8,6 +8,11 @@ public class SlideWindowFramework {
     public void slideWindow(String s, String needs){
         //记录窗口中满足条件的数据
         Map<Character,Integer> window = new HashMap<>();
+        Map<Character,Integer> needsM = new HashMap<>();
+        for (int i = 0; i < needs.length(); i++) {
+            char c = needs.charAt(i);
+            needsM.put(c,needsM.getOrDefault(c,0) + 1);
+        }
         //窗口 [left,right)
         int left = 0, right = 0;
         //记录窗口中满足needs中字符的个数
@@ -22,7 +27,7 @@ public class SlideWindowFramework {
             // ...
 
             //判断左侧窗口是否要收缩
-            while (left < right && valid == needs.length()){
+            while (valid == needsM.size()){
                 //将移出窗口的字符
                 char out = s.charAt(left);
                 //注意避坑
